@@ -1,0 +1,73 @@
+﻿<Window x:Class="KMFinance.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KMFinance"
+        mc:Ignorable="d"
+        Title="StartWindow" Height="450" Width="800">
+    <Grid Background="#FF3EC6C8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="425" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Column="0" Background="#FFE2A90B">
+            <Label Content="Home" HorizontalAlignment="Left" Margin="18,52,0,0" VerticalAlignment="Top" Height="23" Width="44" FontSize="11"/>
+            <Label Content="Cards" HorizontalAlignment="Left" Margin="19,110,0,0" VerticalAlignment="Top" Height="23" Width="44" FontSize="11"/>
+            <Label Content="Deposits" HorizontalAlignment="Left" Margin="12,177,0,0" VerticalAlignment="Top" Height="23" Width="54" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
+            <Label Content="Credits" HorizontalAlignment="Left" Margin="14,237,0,0" VerticalAlignment="Top" Height="23" Width="54" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
+        </Grid>
+        <Button x:Name="butHome"
+            HorizontalAlignment="Center" Margin="10,22,10,0"
+                VerticalAlignment="Top" Height="30" Width="32" BorderBrush="#FFE2A90B">
+            <Button.Background>
+                <ImageBrush ImageSource="/KMFinance;component/Images/Home.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butCards"
+            HorizontalAlignment="Center" Margin="23,85,22.2,0"
+            VerticalAlignment="Top" Height="30" Width="38" BorderBrush="#FFE2A90B">
+            <Button.Background>
+                <ImageBrush ImageSource="/KMFinance;component/Images/Cards.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butDeposits"
+            HorizontalAlignment="Center" Margin="23,147,22.2,0"
+            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
+            <Button.Background>
+                <ImageBrush ImageSource="/KMFinance;component/Images/Deposits.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butCredits"
+            HorizontalAlignment="Center" Margin="23,212,22.2,0"
+            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
+            <Button.Background>
+                <ImageBrush ImageSource="/KMFinance;component/Images/Credits.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butSettings"
+            HorizontalAlignment="Center" Margin="23,349,22.2,0"
+            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/KMFinance;component/Images/Settings.png"/>
+            </Button.Background>
+        </Button>
+
+
+        <Frame Grid.Column="1" Background="#FF00633F">
+
+        </Frame>
+
+
+        <Grid Grid.Column="2" Background="#FFC0FAE5">
+
+        </Grid>
+
+
+    </Grid>
+
+
+</Window>
