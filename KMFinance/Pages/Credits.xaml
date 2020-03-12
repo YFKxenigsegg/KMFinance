@@ -9,6 +9,6 @@
       Title="Credits">
 
     <Grid>
-        
+        <Button Content="Credits"/>
     </Grid>
 </Page>

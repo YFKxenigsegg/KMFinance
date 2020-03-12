@@ -1,4 +1,5 @@
 ﻿using System;
+using KMFinance.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,12 @@ using System.Windows.Shapes;
 
 namespace KMFinance.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Cards.xaml
-    /// </summary>
     public partial class Cards : Page
     {
-        public Cards()
+        public Cards(string cardNo, string name, string surname)
         {
             InitializeComponent();
+            DataContext = new CardsPageVM(cardNo, name, surname);
         }
     }
 }

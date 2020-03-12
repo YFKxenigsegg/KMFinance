@@ -8,7 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Cards">
 
+
     <Grid>
-        
+
+        <Image Source="/KMFinance;component/Images/Cards.png" Height="400" Width="450"/>
+        <!--<Canvas>
+            <Label Content="{Binding LblGetCardNo}" HorizontalAlignment="Left" Margin="244,189,0,0" 
+               VerticalAlignment="Top" Width="244" Background="White"/>
+        <Label Content="KMFinance" HorizontalAlignment="Left" Margin="338,84,0,0" 
+               VerticalAlignment="Top" Width="70" Foreground="#FFE2A90B" FontStyle="Italic"/>
+        <Label Content="{Binding LblGetNameSurnameCard}" HorizontalAlignment="Left" Margin="244,266,0,0" 
+               VerticalAlignment="Top" Width="142" Foreground="#FFE2A90B" FontStyle="Italic"/>
+        </Canvas>-->
+
     </Grid>
 </Page>

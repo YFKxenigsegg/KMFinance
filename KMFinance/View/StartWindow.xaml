@@ -9,8 +9,8 @@
     <Grid Background="#FF3EC6C8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="425" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
 
 
@@ -21,6 +21,7 @@
             <Label Content="Credits" HorizontalAlignment="Left" Margin="14,237,0,0" VerticalAlignment="Top" Height="23" Width="54" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
         </Grid>
         <Button x:Name="butHome"
+                Command="{Binding butMenuHome_Click}"
             HorizontalAlignment="Center" Margin="10,22,10,0"
                 VerticalAlignment="Top" Height="30" Width="32" BorderBrush="#FFE2A90B">
             <Button.Background>
@@ -28,6 +29,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="butCards"
+                Command="{Binding butMenuCards_Click}"
             HorizontalAlignment="Center" Margin="23,85,22.2,0"
             VerticalAlignment="Top" Height="30" Width="38" BorderBrush="#FFE2A90B">
             <Button.Background>
@@ -35,6 +37,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="butDeposits"
+                Command="{Binding butMenuDeposits_Click}"
             HorizontalAlignment="Center" Margin="23,147,22.2,0"
             VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
             <Button.Background>
@@ -42,6 +45,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="butCredits"
+                Command="{Binding butMenuCresits_Click}"
             HorizontalAlignment="Center" Margin="23,212,22.2,0"
             VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
             <Button.Background>
@@ -49,6 +53,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="butSettings"
+                Command="{Binding butMenuSettings_Click}"
             HorizontalAlignment="Center" Margin="23,349,22.2,0"
             VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
             <Button.Background>
@@ -57,8 +62,12 @@
         </Button>
 
 
-        <Frame Grid.Column="1" Background="#FF00633F">
-
+        <Frame Grid.Column="1" 
+               Background="#FF00633F"
+               Content="{Binding CurrentPage}"
+               NavigationUIVisibility="Hidden"
+               Opacity="{Binding FrameOpacity}"
+               >
         </Frame>
 
 

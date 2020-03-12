@@ -9,6 +9,6 @@
       Title="Settings">
 
     <Grid>
-        
+        <Button Content="Settings"/>
     </Grid>
 </Page>
