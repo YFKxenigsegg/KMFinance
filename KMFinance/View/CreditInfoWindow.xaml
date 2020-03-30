@@ -1,0 +1,65 @@
+﻿<Window x:Class="KMFinance.View.CreditInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KMFinance.View"
+        mc:Ignorable="d"
+        Title="CreditInfoWindowVM" Height="auto" Width="700">
+
+    <Window.Resources>
+        <Style x:Key="StyleTextBlock">
+            <Setter Property="TextBlock.FontFamily" Value="Sitka Small" />
+            <Setter Property="TextBlock.FontSize" Value="16" />
+            <Setter Property="TextBlock.FontStyle" Value="Italic" />
+            <Setter Property="TextBlock.FontWeight" Value="Bold" />
+            <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+            <Setter Property="TextBlock.Margin" Value="10"/>
+        </Style>
+        <Style x:Key="StyleTextBlockBinding">
+            <Setter Property="TextBlock.FontFamily" Value="Sitka Small" />
+            <Setter Property="TextBlock.FontSize" Value="17" />
+            <Setter Property="TextBlock.Background" Value="#FFE2A90B"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+            <Setter Property="TextBlock.Margin" Value="10,0"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Название кредита"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding NameCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Ттип кредита"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding TypeCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Валюта кредита"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding CurrencyCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Условие установления процентной ставки"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding InterestRateConditionCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Срок кредита (в месяцах)"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding TermCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Процентная ставка (годовых)"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding IterestRateCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Способ уплаты процентов"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding InterestPaymentMethodCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+            <TextBlock Text="Максимальный размер кредита"
+                        Style="{StaticResource StyleTextBlock}"/>
+            <TextBlock Text="{Binding MaximumLoanAmountCredit}"
+                       Style="{StaticResource StyleTextBlockBinding}"/>
+        </StackPanel>
+    </Grid>
+</Window>

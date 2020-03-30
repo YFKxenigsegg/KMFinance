@@ -37,7 +37,7 @@ namespace KMFinance
         {
             string login = fldLogin.Text;
             string password = fldPassword.Text;
-            if ((bool)boxCheckRemember.IsChecked)//SOLVVE
+            if ((bool)boxCheckRemember.IsChecked) //SOLVVE
             {
                 //SerializeXml(login, password);
                 SerializeJson(login, password);

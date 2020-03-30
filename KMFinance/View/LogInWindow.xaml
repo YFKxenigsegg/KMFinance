@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KMFinance"
         mc:Ignorable="d"
-        Title="LogInWindow" Height="450" Width="800">
+        Title="LogInWindow" Height="450" Width="800" ResizeMode="CanMinimize">
     <Grid x:Name="LoginWindow">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,7 +17,7 @@
         <Label Content="User name" HorizontalAlignment="Left" Margin="318,245,0,0" VerticalAlignment="Top" Height="19" Width="65" RenderTransformOrigin="0.5,0.5" FontSize="8" FontWeight="Bold" IsEnabled="False" FontStyle="Italic" Foreground="#FFE2A90B"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="318,293,0,0" VerticalAlignment="Top" Height="19" Width="65" RenderTransformOrigin="0.5,0.5" FontSize="8" IsEnabled="False" FontWeight="Bold" FontStyle="Italic" Foreground="#FFE2A90B"/>
         <CheckBox x:Name="boxCheckRemember" Content="Remember me" HorizontalAlignment="Left" Margin="317,338,0,0" VerticalAlignment="Top" Width="91" Background="#FFD3CEC1" BorderBrush="#FF00633F" Foreground="#FFE2A90B" FontSize="10"/>
-        <Button x:Name="butLogin" Content="" HorizontalAlignment="Left" Margin="499,310,0,0" VerticalAlignment="Top" Height="23" Width="23" BorderBrush="#FF00633F" Click="butLogin_Click">
+        <Button x:Name="butLogin" Content="" HorizontalAlignment="Left" Margin="499,312,0,0" VerticalAlignment="Top" Height="23" Width="23" BorderBrush="#FF00633F" Click="butLogin_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/KMFinance;component/Images/InputOne.png"/>
             </Button.Background>

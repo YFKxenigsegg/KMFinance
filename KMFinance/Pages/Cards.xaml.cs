@@ -18,6 +18,11 @@ namespace KMFinance.Pages
 {
     public partial class Cards : Page
     {
+        public Cards()
+        {
+            //
+            InitializeComponent();
+        }
         public Cards(string cardNo, string name, string surname)
         {
             InitializeComponent();

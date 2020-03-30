@@ -1,16 +1,21 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Newtonsoft.Json.Linq;
 
 namespace KMFinance.ViewModel
 {
@@ -26,78 +31,73 @@ namespace KMFinance.ViewModel
 
 		private Page _currentPage;
 		public Page CurrentPage { get { return _currentPage; } set { _currentPage = value; RaisePropertyChanged(() => CurrentPage); } }
-
-		private double _frameOpacity;
-		public double FrameOpacity { get { return _frameOpacity; } set { _frameOpacity = value; } }
+		public double FrameOpacity { get; set; }
+		public StartWindowVM()
+		{
+			//
+			Deposits = new Pages.Deposits();
+			Credits = new Pages.Credits();
+			FrameOpacity = 1;
+			CurrentPage = Credits;
+		}
 
 		public StartWindowVM(string PassportNumber)
 		{
 			var infoClnt = getInfo(PassportNumber);
 			Home = new Pages.Home(infoClnt.Amount, infoClnt.CardNo);
 			Cards = new Pages.Cards(infoClnt.CardNo, infoClnt.NameClnt, infoClnt.Surname);
-			Deposits = new Pages.Deposits();
+			Deposits = new Pages.Deposits(infoClnt.Amount);
 			Credits = new Pages.Credits();
 			Settings = new Pages.Settings();
-			
 
 			FrameOpacity = 1;
 			CurrentPage = Home;
 		}
-		public ICommand butMenuHome_Click
+
+        #region ICommand buttons menu
+        public ICommand butMenuHome_Click
 		{
 			get
 			{
-				return new RelayCommand(() => SlowOpacity(Home));
+				return new RelayCommand(() => ChangeCurrentPage(Home));
 			}
 		}
 		public ICommand butMenuCards_Click
 		{
 			get
 			{
-				return new RelayCommand(() => SlowOpacity(Cards));
+				return new RelayCommand(() => ChangeCurrentPage(Cards));
 			}
 		}
 		public ICommand butMenuDeposits_Click
 		{
 			get
 			{
-				return new RelayCommand(() => SlowOpacity(Deposits));
+				return new RelayCommand(() => ChangeCurrentPage(Deposits));
 			}
 		}
 		public ICommand butMenuCredits_Click
 		{
 			get
 			{
-				return new RelayCommand(() => SlowOpacity(Credits));
+				return new RelayCommand(() => ChangeCurrentPage(Credits));
 			}
 		}
 		public ICommand butMenuSettings_Click
 		{
 			get
 			{
-				return new RelayCommand(() => SlowOpacity(Settings));
+				return new RelayCommand(() => ChangeCurrentPage(Settings));
 			}
 		}
-		private async void SlowOpacity(Page page)
+		private  void ChangeCurrentPage(Page page)
 		{
-			await Task.Factory.StartNew(() =>
-			{
-				for (double i = 1.0; i > 0.0; i -= 0.1)
-				{
-					FrameOpacity = i;
-					Thread.Sleep(30);
-				}
 				CurrentPage = page;
-				for (double i = 0.0; i < 1.1; i += 0.1)
-				{
-					FrameOpacity = i;
-					Thread.Sleep(30);
-				}
-			});
 		}
+        #endregion
 
-
-		private InfoClnt getInfo(string psrtNo)
+        #region request information about client from database
+        private InfoClnt getInfo(string psrtNo)
 		{
 			string connecStr = @"Data Source=DESKTOP-RJ9ED1F\SQLEXPRESS;Initial Catalog=BankClientsDB;Integrated Security=True";
 			connection = new SqlConnection(connecStr);
@@ -161,7 +161,131 @@ namespace KMFinance.ViewModel
 
 			return infoClnt;
 		}
-	}
+		#endregion
+
+		#region currency
+		#region set/get purchase/sale USD
+		public string setPurchaseDollar
+		{
+			get
+			{
+				return GetPurchaseDollar();
+			}
+		}
+		private string GetPurchaseDollar()
+		{
+			WebClient wv = new WebClient();
+			//https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=Минск");
+			return Regex.Match(responce, @"USD_in"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+		
+		public string setSaleDollar
+		{
+			get
+			{
+				return GetSaleDollar();
+			}
+		}
+		private string GetSaleDollar()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"USD_out"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+		#endregion
+
+		#region set/get purchase/sale EUR
+		public string setPurchaseEuro
+		{
+			get
+			{
+				return GetPurchaseEuro();
+			}
+		}
+		private string GetPurchaseEuro()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"EUR_in"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+
+		public string setSaleEuro
+		{
+			get
+			{
+				return GetSaleEuro();
+			}
+		}
+		private string GetSaleEuro()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"EUR_out"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+		#endregion
+
+		#region set/get purchase/sale RUB
+		public string setPurchaseRUB
+		{
+			get
+			{
+				return GetPurchaseRUB();
+			}
+		}
+		private string GetPurchaseRUB()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"RUB_in"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+
+		public string setSaleRUB
+		{
+			get
+			{
+				return GetSaleRUB();
+			}
+		}
+		private string GetSaleRUB()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"RUB_out"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+		#endregion
+
+		#region set/get purchase/sale GBP
+		public string setPurchaseGBP
+		{
+			get
+			{
+				return GetPurchaseGBP();
+			}
+		}
+		private string GetPurchaseGBP()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"GBP_in"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+
+		public string setSaleGBP
+		{
+			get
+			{
+				return GetSaleGBP();
+			}
+		}
+		private string GetSaleGBP()
+		{
+			WebClient wv = new WebClient();
+			string responce = wv.DownloadString("https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA");
+			return Regex.Match(responce, @"GBP_out"":""([0-9]+\.[0-9]+)").Groups[1].Value;
+		}
+        #endregion
+        #endregion
+    }
 }
 
 

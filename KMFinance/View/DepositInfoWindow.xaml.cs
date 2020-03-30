@@ -1,4 +1,5 @@
-﻿using KMFinance.ViewModel;
+﻿using KMFinance.Model;
+using KMFinance.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KMFinance.Pages
+namespace KMFinance.View
 {
-    public partial class Home : Page
+    public partial class DepositInfoWindow : Window
     {
-        public Home()
-        {
-            //
-            InitializeComponent();
-        }
-        public Home(int amount, string cardNo)
+        public DepositInfoWindow(Deposit deposit)
         {
             InitializeComponent();
-            DataContext = new HomePageVM(amount, cardNo);
+            DataContext = new DepositInfoWindowVM(deposit);
         }
     }
 }

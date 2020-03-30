@@ -11,6 +11,10 @@ namespace KMFinance.ViewModel
         public string CardNo { get; set; }
         public string NameClnt { get; set; }
         public string Surname { get; set; }
+        public CardsPageVM()
+        {
+            //
+        }
 
         public CardsPageVM(string cardNo, string name, string surname)
         {

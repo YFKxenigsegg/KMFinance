@@ -13,6 +13,10 @@ namespace KMFinance.ViewModel
     {
         public int Amount { get; set; }
         public string CardNo { get; set; }
+        public HomePageVM()
+        {
+            //
+        }
         public HomePageVM(int amount, string cardNo)
         {
             Amount = amount;
@@ -30,14 +34,14 @@ namespace KMFinance.ViewModel
         {
             get
             {
-                return Amount.ToString() + "$";
+                return Amount.ToString() + "BYN";
             }
         }
         public string LblGetCardNo
         {
             get
             {
-                return CardNo;
+                return  "..." + CardNo.Substring(CardNo.Length-4);
             }
         }
     }
