@@ -3,12 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:localclnt="clr-namespace:KMFinance"
       xmlns:local="clr-namespace:KMFinance.Pages"
+     
       mc:Ignorable="d" 
       d:DesignHeight="560.8" d:DesignWidth="598.4"
       Title="Home">
 
-    <Grid>
+    <Grid> 
         <Canvas>
             <Label Content="Balance now, " HorizontalAlignment="Center" 
                Margin="43,107,216.8,0" VerticalAlignment="Top" 
@@ -21,6 +23,7 @@
                Foreground="White"/>
             <Label 
                 Content="{Binding LblGetAmout}" 
+                 Name="lblAmount"
                 HorizontalAlignment="Left" Margin="47,147,0,0" 
                VerticalAlignment="Top" Height="59" Width="254" FontSize="24"
                 Foreground="White" FontStyle="Italic"/>
@@ -33,6 +36,12 @@
                 Height="34" Width="72" FontSize="13"
                 Foreground="White" Margin="1,-3.2,-10.4,-10"/>
             </Border>
+            <TextBox x:Name="something"
+                     Width="70"
+                Text="0.00" 
+                     Canvas.Left="220" Canvas.Top="220"/>
+            <Button Content="Check" Click="Button_Click"
+                    Canvas.Left="310" Canvas.Top="220"/>
         </Canvas>
     </Grid>
 </Page>

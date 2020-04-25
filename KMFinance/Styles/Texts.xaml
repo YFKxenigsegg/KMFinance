@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:KMFinance.Style">
+
+    <Style x:Key="BaseText" TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style.Setters>
+    </Style>
+
+</ResourceDictionary>

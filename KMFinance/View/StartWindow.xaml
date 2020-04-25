@@ -5,69 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KMFinance"
         mc:Ignorable="d"
-        Title="StartWindow" Height="590" Width="975" ResizeMode="CanMinimize">
+        Title="StartWindow" Height="590" Width="975" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <!--<Window.Resources>
-        <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=}"/>
-        <Setter Property="BorderBrush" Value="#FFE2A90B"/>
-    </Window.Resources>-->
-
-    <Grid Background="#FF3EC6C8">
+    <Window.Resources>
+        <Style  TargetType="TextBlock" x:Key="TextBlockStyleCurrency">
+            <Style.Setters>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Background="#FFE2A90B">
-            <Label Content="Home" HorizontalAlignment="Left" Margin="18,52,0,0" VerticalAlignment="Top" Height="23" Width="44" FontSize="11"/>
-            <Label Content="Cards" HorizontalAlignment="Left" Margin="19,110,0,0" VerticalAlignment="Top" Height="23" Width="44" FontSize="11"/>
-            <Label Content="Deposits" HorizontalAlignment="Left" Margin="12,177,0,0" VerticalAlignment="Top" Height="23" Width="54" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
-            <Label Content="Credits" HorizontalAlignment="Left" Margin="14,237,0,0" VerticalAlignment="Top" Height="23" Width="54" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
-            <Label Content="Settings" HorizontalAlignment="Left" Margin="11,522,0,0" VerticalAlignment="Top" Height="23" Width="57" FontSize="11" RenderTransformOrigin="-0.091,3.061"/>
+            <StackPanel>
+                <Button Style="{StaticResource BaseButton}"
+                        Command="{Binding butMenuHome_Click}">
+                    <Grid>
+                        <StackPanel>
+                            <Image Source="/KMFinance;component/Images/Home.png" Width="30"/>
+                            <TextBlock Text="Главная" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource BaseButton}"
+                        Command="{Binding butMenuCards_Click}">
+                    <Grid>
+                        <StackPanel>
+                            <Image Source="/KMFinance;component/Images/Cards.png" Width="30"/>
+                            <TextBlock Text="Карты" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource BaseButton}"
+                        Command="{Binding butMenuDeposits_Click}">
+                    <Grid>
+                        <StackPanel>
+                            <Image Source="/KMFinance;component/Images/Deposits.png" Width="30"/>
+                            <TextBlock Text="Депозиты" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource BaseButton}"
+                        Command="{Binding butMenuCredits_Click}">
+                    <Grid>
+                        <StackPanel>
+                            <Image Source="/KMFinance;component/Images/Credits.png" Width="30"/>
+                            <TextBlock Text="Кредиты" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                
+            </Grid>
+            <Grid Grid.Row="2">
+                <Button Style="{StaticResource BaseButton}"
+                        Command="{Binding butMenuSettings_Click}">
+                    <Grid>
+                        <StackPanel>
+                            <Image Source="/KMFinance;component/Images/Settings.png" Width="30"/>
+                            <TextBlock Text="Настройки" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </Grid>
         </Grid>
-        <Button x:Name="butHome"
-                Command="{Binding butMenuHome_Click}"
-            HorizontalAlignment="Center" Margin="10,22,10,0"
-                VerticalAlignment="Top" Height="30" Width="32" BorderBrush="#FFE2A90B">
-            <Button.Background>
-                <ImageBrush ImageSource="/KMFinance;component/Images/Home.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butCards"
-                Command="{Binding butMenuCards_Click}"
-            HorizontalAlignment="Center" Margin="23,85,22.2,0"
-            VerticalAlignment="Top" Height="30" Width="38" BorderBrush="#FFE2A90B">
-            <Button.Background>
-                <ImageBrush ImageSource="/KMFinance;component/Images/Cards.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butDeposits"
-                Command="{Binding butMenuDeposits_Click}"
-            HorizontalAlignment="Center" Margin="23,147,22.2,0"
-            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
-            <Button.Background>
-                <ImageBrush ImageSource="/KMFinance;component/Images/Deposits.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butCredits"
-                Command="{Binding butMenuCredits_Click}"
-            HorizontalAlignment="Center" Margin="23,212,22.2,0"
-            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
-            <Button.Background>
-                <ImageBrush ImageSource="/KMFinance;component/Images/Credits.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butSettings"
-                Command="{Binding butMenuSettings_Click}"
-            HorizontalAlignment="Center" Margin="18,495,16.4,0"
-            VerticalAlignment="Top" Height="30" Width="36" BorderBrush="#FFE2A90B">
-            <Button.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="/KMFinance;component/Images/Settings.png"/>
-            </Button.Background>
-        </Button>
-
 
         <Frame Grid.Column="1" 
                Background="#FF00633F"
@@ -76,211 +92,78 @@
                Opacity="{Binding FrameOpacity}">
         </Frame>
 
-
-        <Grid Grid.Column="2" Background="#FFFFDD7E">
-
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="56"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <TextBlock Text="Курс валют"/>
 
- 
-            <Grid Grid.Row="0">
-                <Border  BorderThickness="2" BorderBrush="Black">
-                    <TextBlock Text="Курс валют" 
-                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                           Margin="90,10,0,0" Foreground="#FFAD3939" FontSize="24" FontStyle="Italic" FontWeight="Bold"/>
-            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Валюта" Style="{Binding }"/>
+                <TextBlock Grid.Column="1" Text="Покупка"/>
+                <TextBlock Grid.Column="2" Text="Продажа"/>
+                <Grid Grid.Row="1" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/KMFinance;component/Images/SignUSD.png" Width="35"/>
+                        <TextBlock  Text="USD" Style="{StaticResource BaseText}"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding setPurchaseDollar}"
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding setSaleDollar}"
+                           Style="{StaticResource BaseText}"/>
+                
+                <Grid Grid.Row="2" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/KMFinance;component/Images/SignEUR.png" Width="35"/>
+                        <TextBlock  Text="EUR" Style="{StaticResource BaseText}"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding setPurchaseEuro}"
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding setSaleEuro}"
+                           Style="{StaticResource BaseText}"/>
+
+                <Grid Grid.Row="3" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/KMFinance;component/Images/SignRUB.png" Width="35"/>
+                        <TextBlock  Text="RUB" Style="{StaticResource BaseText}"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding setPurchaseRUB}"
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding setSaleRUB}"
+                           Style="{StaticResource BaseText}"/>
+                
+                <Grid Grid.Row="4" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/KMFinance;component/Images/SignGPB.png" Width="35"/>
+                        <TextBlock  Text="GPB" Style="{StaticResource BaseText}"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding setPurchaseGBP}"
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding setSaleGBP}"
+                           Style="{StaticResource BaseText}"/>
+
+            </Grid>
         </Grid>
         
-
-        <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.ColumnSpan="2">
-                    <TextBlock Grid.Column="0" Text="Валюта" Grid.ColumnSpan="2"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="16" FontStyle="Italic" FontWeight="Bold"/>
-                    </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="2">
-                    <TextBlock Grid.Column="2" Text="Покупка"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="3">
-                    <TextBlock Grid.Column="3" Text="Продажа"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-            </Grid>
-                 
-            
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.ColumnSpan="2">
-                <TextBlock Grid.Column="1" Text="USD"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
-                           Foreground="#FFAD3939" FontSize="12" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="2">
-                    <TextBlock Grid.Column="2" Text="{Binding setPurchaseDollar}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="3">
-                <TextBlock Grid.Column="3" Text="{Binding setSaleDollar}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Image Source="/KMFinance;component/Images/SignUSD.png"
-                       Height="30"></Image>
-            </Grid>
-
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.ColumnSpan="2">
-                <TextBlock Grid.Column="1" Text="EUR"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
-                           Foreground="#FFAD3939" FontSize="12" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="2">
-                <TextBlock Grid.Column="2" Text="{Binding setPurchaseEuro}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="3">
-                <TextBlock Grid.Column="3" Text="{Binding setSaleEuro}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Image Source="/KMFinance;component/Images/SignEUR.png"
-                       Height="30"></Image>
-            </Grid>
-            <Grid Grid.Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.ColumnSpan="2">
-                <TextBlock Grid.Column="1" Text="RUB"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
-                           Foreground="#FFAD3939" FontSize="12" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="2">
-                <TextBlock Grid.Column="2" Text="{Binding setPurchaseRUB}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="3">
-                <TextBlock Grid.Column="3" Text="{Binding setSaleRUB}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Image Source="/KMFinance;component/Images/SignRUB.png"
-                       Height="32"></Image>
-            </Grid>
-            <Grid Grid.Row="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.ColumnSpan="2">
-                <TextBlock Grid.Column="1" Text="GPB"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
-                           Foreground="#FFAD3939" FontSize="12" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="2">
-                <TextBlock Grid.Column="2" Text="{Binding setPurchaseGBP}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Border  BorderThickness="2" BorderBrush="Black" Grid.Column="3">
-                <TextBlock Grid.Column="3" Text="{Binding setSaleGBP}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="#FFAD3939" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                </Border>
-                <Image Source="/KMFinance;component/Images/SignGPB.png"
-                       Height="36"></Image>
-            </Grid>
-
-
-
-
-            <!--<DataGrid x:Name="ResultDataGrid" AutoGenerateColumns="False" 
-                      IsReadOnly="True" ColumnWidth="56" LoadingRow="AddRowIndicies" 
-                      HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" SelectionMode="Single">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="a"/>
-                    <DataGridTextColumn Header="b"/>
-                    <DataGridTextColumn Header="λ"/>
-                    <DataGridTextColumn Header="μ"/>
-                    <DataGridTextColumn Header="F(λ)"/>
-                </DataGrid.Columns>
-            </DataGrid>-->
-
-
-
-
-
-            
-
-            <!--<Label Content="{Binding setPurchaseDollar}" 
-                   HorizontalAlignment="Left" 
-                   Margin="115,110,0,0" VerticalAlignment="Top" Height="27" Width="98" FontSize="14" FontFamily="Century" FontWeight="Bold"/>
-            <Label Content="{Binding setSaleDollar}" 
-                   HorizontalAlignment="Left" 
-                Margin="115,162,0,0" VerticalAlignment="Top" Height="27" Width="98" FontSize="14" FontFamily="Century" FontWeight="Bold"/>
-            <Label Content="Курсы валют" 
-                   HorizontalAlignment="Left" Margin="10,36,0,0" 
-                   VerticalAlignment="Top" Width="280" IsEnabled="False" FontFamily="Century" FontSize="20" FontWeight="Bold"/>
-            <Label Content="Доллар США" 
-                   HorizontalAlignment="Left" Margin="55,75,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Century"/>
-            <Label Content="Покупка" 
-                   HorizontalAlignment="Left" Margin="34,110,0,0" VerticalAlignment="Top" FontFamily="Century" FontSize="16"/>
-            <Label Content="Продажа" 
-                   HorizontalAlignment="Left" Margin="34,158,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <Image HorizontalAlignment="Left" Height="34" Margin="10,75,0,0" VerticalAlignment="Top" Width="40">
-                <Image.OpacityMask>
-                    <ImageBrush ImageSource="/KMFinance;component/Images/SignDollarUSA.png" Stretch="Uniform"/>
-                </Image.OpacityMask>
-            </Image>
-            <Label Content="Евро" 
-                HorizontalAlignment="Left" Margin="55,200,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Century"/>
-            <Label Content="Покупка" 
-                HorizontalAlignment="Left" Margin="34,234,0,0" VerticalAlignment="Top" FontFamily="Century" FontSize="16"/>
-            <Label Content="Продажа" 
-                HorizontalAlignment="Left" Margin="34,283,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <Label Content="{Binding setPurchaseEuro}" 
-                HorizontalAlignment="Left" 
-                Margin="115,234,0,0" VerticalAlignment="Top" Height="27" Width="98" FontSize="14" FontFamily="Century" FontWeight="Bold"/>
-            <Label Content="{Binding setSaleEuro}" 
-                HorizontalAlignment="Left" 
-                Margin="115,283,0,0" VerticalAlignment="Top" Height="27" Width="98" FontSize="14" FontFamily="Century" FontWeight="Bold"/>-->
-        </Grid>
-
     </Grid>
 
 </Window>

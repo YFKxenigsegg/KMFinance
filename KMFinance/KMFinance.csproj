@@ -183,6 +183,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Model\Credit.cs" />
+    <Compile Include="Model\Currency.cs" />
     <Compile Include="Model\Deposit.cs" />
     <Compile Include="Pages\Cards.xaml.cs">
       <DependentUpon>Cards.xaml</DependentUpon>
@@ -205,6 +206,7 @@
     <Compile Include="ViewModel\DepositInfoWindowVM.cs" />
     <Compile Include="ViewModel\DepositsPageVM.cs" />
     <Compile Include="ViewModel\HomePageVM.cs" />
+    <Compile Include="ViewModel\SettingsPageVM.cs" />
     <Compile Include="View\CreditInfoWindow.xaml.cs">
       <DependentUpon>CreditInfoWindow.xaml</DependentUpon>
     </Compile>
@@ -219,6 +221,14 @@
     </Compile>
     <Compile Include="Model\UserClient.cs" />
     <Compile Include="ViewModel\StartWindowVM.cs" />
+    <Page Include="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreditInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -345,6 +355,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\simpleCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ArrowBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

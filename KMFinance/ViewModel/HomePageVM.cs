@@ -5,22 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace KMFinance.ViewModel
 {
-    class HomePageVM : ViewModelBase
+    class HomePageVM : ViewModelBase    
     {
-        public int Amount { get; set; }
-        public string CardNo { get; set; }
+        InfoClnt client;
         public HomePageVM()
         {
             //
         }
-        public HomePageVM(int amount, string cardNo)
+        public HomePageVM(InfoClnt clnt)
         {
-            Amount = amount;
-            CardNo = cardNo;
+            client = clnt;
         }
 
         public string LblGetDateNow
@@ -34,14 +33,15 @@ namespace KMFinance.ViewModel
         {
             get
             {
-                return Amount.ToString() + "BYN";
+                return client.Amount.ToString();
             }
+            set { }
         }
         public string LblGetCardNo
         {
             get
             {
-                return  "..." + CardNo.Substring(CardNo.Length-4);
+                return  "..." + client.CardNo.Substring(client.CardNo.Length-4);
             }
         }
     }

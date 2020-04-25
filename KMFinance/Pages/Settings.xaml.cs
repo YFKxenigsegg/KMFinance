@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMFinance.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,17 @@ using System.Windows.Shapes;
 
 namespace KMFinance.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Settings.xaml
-    /// </summary>
     public partial class Settings : Page
     {
         public Settings()
         {
             InitializeComponent();
+            DataContext = new SettingsPageVM();
         }
+        private void butExit_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
     }
 }

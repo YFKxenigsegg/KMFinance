@@ -6,9 +6,18 @@
       xmlns:local="clr-namespace:KMFinance.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Settings">
+      Title="Settings" Background="#FF00633F"> 
 
+    
+    
     <Grid>
-        <Button Content="Settings"/>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="ВЫХОД"
+                FontSize="20"
+                Background="#FFE2A90B"
+                Click="butExit_Click"/>
     </Grid>
+
+
 </Page>

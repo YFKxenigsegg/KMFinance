@@ -19,7 +19,7 @@
         <CheckBox x:Name="boxCheckRemember" Content="Remember me" HorizontalAlignment="Left" Margin="317,338,0,0" VerticalAlignment="Top" Width="91" Background="#FFD3CEC1" BorderBrush="#FF00633F" Foreground="#FFE2A90B" FontSize="10"/>
         <Button x:Name="butLogin" Content="" HorizontalAlignment="Left" Margin="499,312,0,0" VerticalAlignment="Top" Height="23" Width="23" BorderBrush="#FF00633F" Click="butLogin_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/KMFinance;component/Images/InputOne.png"/>
+                <ImageBrush ImageSource="E:\zzz\GitProjectsC#\KMFinance\KMFinance\Images\InputOne.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="butSignup" Content="Sign up..." HorizontalAlignment="Left" Margin="638,0,0,0" VerticalAlignment="Top" Width="93" Background="#FF0B0202" Foreground="#FFE2A90B" BorderBrush="#FF060606" FontWeight="Bold" FontSize="11" FontStyle="Italic" Click="butSignup_Click"/>

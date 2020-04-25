@@ -37,16 +37,17 @@ namespace KMFinance.ViewModel
 			//
 			Deposits = new Pages.Deposits();
 			Credits = new Pages.Credits();
+			Settings = new Pages.Settings();
 			FrameOpacity = 1;
-			CurrentPage = Credits;
+			CurrentPage = Deposits;
 		}
 
 		public StartWindowVM(string PassportNumber)
 		{
 			var infoClnt = getInfo(PassportNumber);
-			Home = new Pages.Home(infoClnt.Amount, infoClnt.CardNo);
+			Home = new Pages.Home(infoClnt);
 			Cards = new Pages.Cards(infoClnt.CardNo, infoClnt.NameClnt, infoClnt.Surname);
-			Deposits = new Pages.Deposits(infoClnt.Amount);
+			Deposits = new Pages.Deposits();
 			Credits = new Pages.Credits();
 			Settings = new Pages.Settings();
 

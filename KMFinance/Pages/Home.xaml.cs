@@ -18,15 +18,27 @@ namespace KMFinance.Pages
 {
     public partial class Home : Page
     {
+        InfoClnt client;
         public Home()
         {
             //
             InitializeComponent();
         }
-        public Home(int amount, string cardNo)
+        public Home(InfoClnt clnt)
         {
             InitializeComponent();
-            DataContext = new HomePageVM(amount, cardNo);
+            client = clnt;
+            DataContext = new HomePageVM(clnt);
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.Parse(something.Text) <= client.Amount)
+            {
+                client.Amount -= int.Parse(something.Text);
+                MessageBox.Show($"Сумма в {something.Text}" + " обрабытввается для отправки.");
+                lblAmount.Content = client.Amount;
+            }
+            else MessageBox.Show("Ошибка. Некорректная сумма перевода или недостаточно средств.");
         }
     }
 }
