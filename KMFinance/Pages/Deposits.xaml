@@ -29,10 +29,8 @@
 
             <Grid>
                 <TextBlock Text="Действующие вклады в банка"
-                           HorizontalAlignment="Center"
-                           FontSize="20" FontWeight="Bold"
-                           FontFamily="Sitka Small" 
-                           Margin="50,20" FontStyle="Italic"/>
+                           Style="{StaticResource BaseText}"
+                           FontSize="20" Margin="50,20"/>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -42,15 +40,18 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Сумма вклада"
-                           Margin="15,10" FontFamily="Sitka Small"/>
+                           Style="{StaticResource BaseText}"
+                           VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,10"/>
                 <TextBox x:Name="fldMinimumAmountDeposit"
                      Height="30" Width="150" Margin="15"
+                         Style="{StaticResource BaseTextBox}"
                          HorizontalAlignment="Left"
                          Text="{Binding MinAmountDepositFltr, UpdateSourceTrigger=PropertyChanged}">
                     
                 </TextBox>
                 <TextBlock Text="Валюта вклада" Grid.Column="1"
-                           Margin="17,10,13.2,10" FontFamily="Sitka Small"/>
+                           Style="{StaticResource BaseText}"
+                           VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,10"/>
                 <ComboBox Name="cbxTypeCurrencyDeposit" Grid.Column="1" 
                           ItemsSource="{Binding typeCurrencyDeposit}" 
                           IsEditable="True"

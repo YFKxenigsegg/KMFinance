@@ -55,8 +55,8 @@ namespace KMFinance.ViewModel
 			CurrentPage = Home;
 		}
 
-        #region ICommand buttons menu
-        public ICommand butMenuHome_Click
+		#region ICommand buttons menu
+		public ICommand butMenuHome_Click
 		{
 			get
 			{

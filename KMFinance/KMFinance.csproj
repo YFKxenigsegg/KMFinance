@@ -185,6 +185,7 @@
     <Compile Include="Model\Credit.cs" />
     <Compile Include="Model\Currency.cs" />
     <Compile Include="Model\Deposit.cs" />
+    <Compile Include="OnPropertyChangedClass.cs" />
     <Compile Include="Pages\Cards.xaml.cs">
       <DependentUpon>Cards.xaml</DependentUpon>
     </Compile>
@@ -200,6 +201,9 @@
     <Compile Include="Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyRelayCommand.cs" />
+    <Compile Include="SUWinValidationRule.cs" />
+    <Compile Include="LATER_ViewModel.cs" />
     <Compile Include="ViewModel\CardsPageVM.cs" />
     <Compile Include="ViewModel\CreditInfoWindowVM.cs" />
     <Compile Include="ViewModel\CreditsPageVM.cs" />

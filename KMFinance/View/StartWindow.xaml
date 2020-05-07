@@ -8,14 +8,6 @@
         Title="StartWindow" Height="590" Width="975" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <Window.Resources>
-        <Style  TargetType="TextBlock" x:Key="TextBlockStyleCurrency">
-            <Style.Setters>
-                <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-            </Style.Setters>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -36,7 +28,7 @@
                     <Grid>
                         <StackPanel>
                             <Image Source="/KMFinance;component/Images/Home.png" Width="30"/>
-                            <TextBlock Text="Главная" FontSize="10" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Главная" Style="{StaticResource BaseTextButtons}"/>
                         </StackPanel>
                     </Grid>
                 </Button>
@@ -45,7 +37,7 @@
                     <Grid>
                         <StackPanel>
                             <Image Source="/KMFinance;component/Images/Cards.png" Width="30"/>
-                            <TextBlock Text="Карты" FontSize="10" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Карты"  Style="{StaticResource BaseTextButtons}"/>
                         </StackPanel>
                     </Grid>
                 </Button>
@@ -54,7 +46,7 @@
                     <Grid>
                         <StackPanel>
                             <Image Source="/KMFinance;component/Images/Deposits.png" Width="30"/>
-                            <TextBlock Text="Депозиты" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Депозиты"  Style="{StaticResource BaseTextButtons}"/>
                         </StackPanel>
                     </Grid>
                 </Button>
@@ -63,7 +55,7 @@
                     <Grid>
                         <StackPanel>
                             <Image Source="/KMFinance;component/Images/Credits.png" Width="30"/>
-                            <TextBlock Text="Кредиты" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Кредиты"  Style="{StaticResource BaseTextButtons}"/>
                         </StackPanel>
                     </Grid>
                 </Button>
@@ -78,7 +70,7 @@
                     <Grid>
                         <StackPanel>
                             <Image Source="/KMFinance;component/Images/Settings.png" Width="30"/>
-                            <TextBlock Text="Настройки" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Настройки"  Style="{StaticResource BaseTextButtons}" FontSize="9"/>
                         </StackPanel>
                     </Grid>
                 </Button>
@@ -98,7 +90,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Курс валют"/>
+            <TextBlock Text="Курс валют"
+                       Style="{StaticResource BaseText}"/>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -114,9 +107,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Валюта" Style="{Binding }"/>
-                <TextBlock Grid.Column="1" Text="Покупка"/>
-                <TextBlock Grid.Column="2" Text="Продажа"/>
+                <TextBlock Text="Валюта" 
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Column="1" Text="Покупка"
+                           Style="{StaticResource BaseText}"/>
+                <TextBlock Grid.Column="2" Text="Продажа"
+                           Style="{StaticResource BaseText}"/>
                 <Grid Grid.Row="1" Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/KMFinance;component/Images/SignUSD.png" Width="35"/>

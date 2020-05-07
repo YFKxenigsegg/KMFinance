@@ -2,10 +2,55 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:KMFinance.Style">
 
-    <Style x:Key="BaseText" TargetType="TextBlock">
+    <Style x:Key="BaseTextButtons" TargetType="TextBlock">
         <Style.Setters>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Sitka Small"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="BaseText" BasedOn="{StaticResource BaseTextButtons}" TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="StyleTextBoxLISUWin" TargetType="TextBox">
+        <Style.Setters>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="168"/>
+            <Setter Property="Margin" Value="20,0"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="StyleLabelSUWin" TargetType="Label">
+        <Style.Setters>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Margin" Value="20,0"/>
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="StyleTextBlockSUWin" TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="Height" Value="auto"/>
+            <Setter Property="Width" Value="168"/>
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="BaseTextBox" TargetType="TextBox">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="17"/>
         </Style.Setters>
     </Style>
 
