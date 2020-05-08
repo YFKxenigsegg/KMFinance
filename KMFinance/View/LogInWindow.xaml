@@ -6,6 +6,24 @@
         xmlns:local="clr-namespace:KMFinance"
         mc:Ignorable="d"
         Title="LogInWindow" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <ControlTemplate x:Key="ErrorTemplate">
+            <Border BorderBrush="Red" BorderThickness="2">
+                <AdornedElementPlaceholder />
+            </Border>
+        </ControlTemplate>
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTemplate}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors).[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid x:Name="LoginWindow">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -16,25 +34,31 @@
                 Click="butSignup_Click"/>
         <Grid Grid.Row="1">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="User name"
+                <Label Content="Login"
                    Style="{StaticResource StyleLabelSUWin}"/>
-                <TextBox x:Name="fldLogin" Text="Input login"
+                <TextBox x:Name="fldLogin"
                      Style="{StaticResource StyleTextBoxLISUWin}"
-                     MouseEnter="fldLogin_MouseEnter"/>
+                         Validation.ErrorTemplate="{StaticResource ErrorTemplate}" 
+                 Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
                 <Label Content="Password"
                    Style="{StaticResource StyleLabelSUWin}"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="fldPassword" Text="Input password"
+                    <TextBox x:Name="fldPassword"
                      Style="{StaticResource StyleTextBoxLISUWin}"
-                     MouseEnter="fldPassword_MouseEnter"/>
-                    <Button x:Name="butLogin" Height="23" Width="23" Click="butLogin_Click">
+                             Validation.ErrorTemplate="{StaticResource ErrorTemplate}" 
+                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                    
+                    <Button x:Name="butLogin" 
+                            Height="23" Width="23" Click="butLogin_Click"
+                            Command="{Binding OkCommand, Mode=OneWay}">
                         <Grid>
                             <Image Source="E:\zzz\GitProjectsC#\KMFinance\KMFinance\Images\InputOne.png"/>
                         </Grid>
                     </Button>
                 </StackPanel>
                 <CheckBox x:Name="boxCheckRemember" Content="Remember me" 
-                          Margin="20,0" FontSize="10"/>
+                          Margin="20,5" FontSize="10"/>
             </StackPanel>
         </Grid>
     </Grid>

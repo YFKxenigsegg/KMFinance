@@ -8,10 +8,6 @@ using System.Text;
 using System.Xml;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -28,6 +24,7 @@ namespace KMFinance
         public LogInWindow()
         {
             InitializeComponent();
+            DataContext = new LIWinValidationRule();
             //getChckBxInfoXml();
             getChckBxInfoJson();
         }
@@ -142,25 +139,6 @@ namespace KMFinance
             SignUpWindow signupWin = new SignUpWindow();
             signupWin.Show();
             this.Close();
-        }
-
-        private void fldLogin_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (fldLogin.Text == "Input login")
-            {
-                fldLogin.Text = "";
-                fldLogin.Background = Brushes.Transparent;
-                fldLogin.Foreground = new SolidColorBrush(Color.FromRgb(226, 169, 11));
-            }
-        }
-        private void fldPassword_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (fldPassword.Text == "Input password")
-            {
-                fldPassword.Text = "";
-                fldPassword.Background = Brushes.Transparent;
-                fldPassword.Foreground = new SolidColorBrush(Color.FromRgb(226, 169, 11));
-            }
         }
     }
 }

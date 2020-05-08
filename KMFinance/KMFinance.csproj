@@ -182,6 +182,7 @@
     </ApplicationDefinition>
     <Compile Include="Command.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="LIWinValidationRule.cs" />
     <Compile Include="Model\Credit.cs" />
     <Compile Include="Model\Currency.cs" />
     <Compile Include="Model\Deposit.cs" />
